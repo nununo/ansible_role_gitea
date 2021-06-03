@@ -231,15 +231,23 @@ To deploy multiple files we created the ``gitea_custom_search`` variable, that c
 + **FOOTER**:
   - Set ``gitea_customize_footer`` to ``true``
   - We Search using first_found in:
-    * "{{ gitea_custom_search }}/gitea_footer/extra_links_footer.tmpl"
-    * "files/{{ inventory_hostname }}/gitea_footer/extra_links_footer.tmpl"
-    * "files/{{ gitea_http_domain }}/gitea_footer/extra_links_footer.tmpl"
-    * 'files/gitea_footer/extra_links_footer.tmpl'
-    * 'files/extra_links_footer.tmpl'
+    * ``"{{ gitea_custom_search }}/gitea_footer/extra_links_footer.tmpl"``
+    * ``"files/{{ inventory_hostname }}/gitea_footer/extra_links_footer.tmpl"``
+    * ``"files/{{ gitea_http_domain }}/gitea_footer/extra_links_footer.tmpl"``
+    * ``'files/gitea_footer/extra_links_footer.tmpl'``
+    * ``'files/extra_links_footer.tmpl'``
 + **CUSTOM FILES**:
   - Set ``gitea_customize_files`` to ``true``
   - Create a directory with the files you want to deploy.
   - Point ``gitea_customize_files_path`` to this directory. *(Default ``{{ gitea_custom_search }}/gitea_files/``)*
++ **HOME**:
+  - Set ``gitea_customize_startpage`` to ``true``
+  - Modify and place the [home.teml](https://github.com/go-gitea/gitea/blob/main/templates/home.tmpl) in your files.
+  - We Search using first_found in:
+    * ``"{{ gitea_custom_search }}/gitea_home/home.tmpl"``
+    * ``"files/{{ inventory_hostname }}/gitea_home/home.tmpl"``
+    * ``"files/{{ gitea_http_domain }}/gitea_home/home.tmpl"``
+    * ``'files/gitea_home/home.tmpl'``
 
 ## Contributing
 Don't hesitate to create a pull request, and when in doubt you can reach me on

@@ -56,5 +56,12 @@ transfer_custom_footer:
     - 'files/gitea_footer/extra_links_footer.tmpl'
     - 'files/extra_links_footer.tmpl'
 
-playbook_version_number: 18  # should be int
+transfer_custom_home:
+  files:
+    - "{{ gitea_custom_search }}/gitea_home/home.tmpl"
+    - "files/{{ inventory_hostname }}/gitea_home/home.tmpl"
+    - "files/{{ gitea_http_domain }}/gitea_home/home.tmpl"
+    - 'files/gitea_home/home.tmpl'
+
+playbook_version_number: 19  # should be int
 playbook_version_path: 'do1jlr.gitea.version'

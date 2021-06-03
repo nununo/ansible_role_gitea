@@ -60,3 +60,7 @@
 - name: optionally deploy public files
   ansible.builtin.include_tasks: customize_public_files.yml
   when: gitea_customize_files|bool
+
+- name: optionally deploy custom startpage
+  ansible.builtin.include_tasks: customize_startpage.yml
+  when: gitea_customize_startpage|bool

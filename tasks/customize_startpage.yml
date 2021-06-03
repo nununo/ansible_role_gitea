@@ -1,0 +1,22 @@
+---
+- name: create directory for custom footer
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    mode: 'u=rwX,g=rX,o='
+  with_items:
+    - "{{ gitea_custom }}/templates"
+
+- name: transfer custom home template
+  become: true
+  ansible.builtin.copy:
+    src: "{{ lookup('first_found', transfer_custom_home) }}"
+    dest: "{{ gitea_custom }}/templates/home.tmpl"
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    mode: '0644'
+  ignore_errors: true
+  notify: "Restart gitea"
